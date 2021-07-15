@@ -1,3 +1,8 @@
-h1 {
-    color: red;
+body {
+    background: turquoise;
+}
+
+#jokeContainerDiv {
+    background: gray;
+    border-box: 10px;
 }
