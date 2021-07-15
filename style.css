@@ -6,3 +6,13 @@ body {
     background: gray;
     border-box: 10px;
 }
+
+#btnPunchline {
+    background-color: maroon;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    width: 200px;
+
+}
