@@ -1,9 +1,13 @@
 body {
     background: turquoise;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
 }
 
 #jokeContainerDiv {
     background: gray;
+    display: inline-block;
+    width: 600px;
 }
 
 h4, p {
@@ -17,4 +21,14 @@ button {
     text-align: center;
     font-size: 14px;
     width: 150px;
+    display: inline-block;
+}
+
+#editButton #removeButton {
+    float: right;
+}
+
+#setlist-notes{
+    display: inline-block;
+    /* height: 5000px; */
 }

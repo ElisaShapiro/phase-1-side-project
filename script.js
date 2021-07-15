@@ -1,6 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
     fetchJokes()
     renderAside()
+    document.querySelector("#add-joke-form").addEventListener('submit', (e) => {
+        e.preventDefault()
+            let newJoke = {
+                punchline: document.querySelector('#add-joke-form #punchline').value,
+                setup: document.querySelector('#add-joke-form #setup').value,
+            }
+        console.log(newJoke)
+        oneJoke(newJoke)
+        }
+    )
 })
 
 function fetchJokes(){
@@ -15,21 +25,35 @@ function oneJoke(joke){
         let h4Setup = document.createElement("h4")
         let pPunchline = document.createElement("p")
         let btnPunchline = document.createElement("button")
+        let btnRemove = document.createElement('button')
+        let btnEdit = document.createElement('button')
         divContainer.id = "jokeContainerDiv"
         h4Setup.id = "setupLine"
         pPunchline.id = "punchlineLine"
         btnPunchline.id = "toggle"
-        h4Setup.textContent = joke.setup
+        h4Setup.textContent = `Setup: ${joke.setup}`
         btnPunchline.textContent = "Reveal Punchline"
-        divContainer.append(h4Setup, btnPunchline, pPunchline)
+        btnRemove.id = "removeButton"
+        btnEdit.id = "editButton"
+        divContainer.append(h4Setup, btnPunchline, btnEdit, btnRemove, pPunchline)
         btnPunchline.addEventListener('click', (e) => {
-            pPunchline.textContent = joke.punchline
+            pPunchline.textContent = `Punchline: ${joke.punchline}`
             if (pPunchline.style.display !== "block") {
                 pPunchline.style.display = "block";
             } else {
                 pPunchline.style.display = "none";
             }
         })
+        btnRemove.textContent = "Remove Joke"
+        btnRemove.addEventListener('click', (e) => {
+            console.log(e.target)
+            e.target.parentElement.remove()
+            e.stopPropagation()
+        })
+        btnEdit.textContent = "Edit Joke"
+            document.querySelector("#add-joke-form #setup") = element.children[0].innerText
+            document.querySelector("#add-joke-form #punchline") = element.children[1].innerText
+
         // let formReview = document.createElement("form")
         // let inputReview = document.createElement("input")
         // let btnReview = document.createElement("button")
@@ -51,9 +75,11 @@ function oneJoke(joke){
         //     ulReview.appendChild(liReview)
         //     inputReview.value = ""
         // })
+        
         document.querySelector("#joke-container").append(divContainer)
     })
 }
+
 function renderAside(){
     let formSetlist = document.createElement("form")
     let inputSetlist = document.createElement("input")
